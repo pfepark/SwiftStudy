@@ -56,3 +56,27 @@ for num in r2
 }
   
 ````
+
+### Optional
+````swift
+var n1 : Int = nil  // error
+var n2 : Optional<Int> = nil
+n2 = 10
+print(n2)   // Optional(10)
+print(n2!)  // 10
+
+var s1 = "10"       // "10sdf"이면 캐스팅 실패
+var n3 = Int(s1)    // 실패 가능성이 있는 모든 함수, 캐스팅 등은 리턴값이 Optional
+
+if (n3 == nil)
+{
+    // failure
+}
+else
+{
+    print("\(n3!)")
+}
+
+var n4 : Optional<Int> = nil
+var n5 : Int? = nil		// 축약 표기
+````
