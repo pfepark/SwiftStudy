@@ -80,3 +80,17 @@ else
 var n4 : Optional<Int> = nil
 var n5 : Int? = nil		// 축약 표기
 ````
+
+### Tuple
+````swift
+var t1 : (Int, Double) = (1, 3.14)
+var t2 = (1, 3.14)		// 초기화시 (  ) 나오면 Tuple
+
+var n1 = t1.0		// tuple의 0번째 요소 접근
+var (n3, d1) = t1
+var (_, d2) = t1	// _ 첫번째 요소는 생략
+
+var pt = (x:1, y:2)
+var x = pt.0
+var y = pt.y
+````
