@@ -94,3 +94,44 @@ var pt = (x:1, y:2)
 var x = pt.0
 var y = pt.y
 ````
+
+### Array
+````swift
+var arr1 : Array<Int> = [1,2,3]
+var arr2 : [Int] = [1,2,3]
+var arr3 = [1,2,3]
+
+// array object
+print( arr1.isEmpty )
+print( arr1.count )
+
+arr1.append(7)
+
+print( arr1 )
+
+// [ ] operator
+var ar1 = [1,2,3]
+var ar2 = [1,2,3]
+
+var ar3 = ar1 + ar2
+ar3[0] = 10
+
+ar3[0...2] = [7,8,9]
+ar3[3...5] = ar1[0...2]
+
+print(ar3)
+
+// 순회
+for num in ar3
+{
+    print(num)
+}
+
+for (idx, num) in ar3.enumerated()  // (index, value)
+{
+    print(idx, num)
+}
+
+// 배열은 객체이므로 맴버함수가 있다
+ar3.removeAll()
+````
