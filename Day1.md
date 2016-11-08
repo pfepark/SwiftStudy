@@ -135,3 +135,44 @@ for (idx, num) in ar3.enumerated()  // (index, value)
 // 배열은 객체이므로 맴버함수가 있다
 ar3.removeAll()
 ````
+
+### if, switch
+````swift
+var n = 10
+if (n == 10)  // if n == 10
+{
+}
+else
+{
+}
+
+// switch
+// 1. double, string 가능.
+// 2. break 가필요 없고, fallthrough 추가
+// 3. default가 꼭 필요
+var name = "KIM"
+switch (name)
+{
+case "KIM": print("1"); fallthrough
+case "LEE" :print("2")
+default: print("default")
+}
+
+var tp = (100, 200)
+switch (tp)
+{
+case (1, 32): print("1")
+case (1, _): print("2")
+case (1, let y): print("3, \(y)")
+case (let x, let y) where x > y : print("4")
+case (let x, let y) : print("5")    // 이 표현이 있으면 default생략가능.
+}
+
+var n2 = 3
+switch n2
+{
+case 1...10: print("1")
+case 11...<20: print("2")
+default: break
+}
+````
