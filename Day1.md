@@ -176,3 +176,41 @@ case 11...<20: print("2")
 default: break
 }
 ````
+
+### loop
+````swift
+for num in 0...10   // num is local variable
+{
+}
+
+while i < 10
+{
+    print( i )
+    i = i + 1
+}
+
+repeat
+{
+    print(i)
+    i  = i - 1
+} while i > 0
+
+// labeled break
+OUTERLOOP : for i in 1...9
+{
+    INNERLOOP : for j in i+1...9
+    {
+        print(i, j)
+        if j == 5
+        {
+            break OUTERLOOP
+        }
+    }
+}
+
+// 2, 4, 6, 8, 10
+for i in stride(from:2, through:10, by:2)
+{
+    print(i)
+}
+````
