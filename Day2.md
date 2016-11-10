@@ -55,4 +55,29 @@ func hoo( num : inout Int)
 var age = 34
 hoo(num : &age)		// call by reference, inout argument
 print(age)
+
+// default parameter
+function foo( msg : String = "Hello" )
+{
+	print( msg )
+}
+
+foo(msg : "asap")
+foo()
+
+// functions with variable arguments
+func average(num : Double...) -> Double
+{
+	showType(num)
+	
+	var total = 0.0
+	for n in num
+	{
+		total = total + n
+	}
+	var ave = total / Double(num.count)
+	return ave
+}
+
+var ret = average(num : 1.1, 2.3, 3.12, 5.7)
 ````
