@@ -80,4 +80,46 @@ func average(num : Double...) -> Double
 }
 
 var ret = average(num : 1.1, 2.3, 3.12, 5.7)
+
+// function overloading
+func foo( a : Int )
+{
+	print("1")
+}
+
+func foo( b : Int )
+{
+	print("2")
+}
+
+func foo( _ b : Int )
+{
+	print("3")
+}
+
+func foo( a : Int, b : Int )
+{
+	print("4")
+}
+
+foo(a:0)
+foo(b:0)
+foo(1)
+foo(a:1, b:2)
+
+// function type
+func goo( a : Int, b : Int ) -> Int
+{
+	return a + b
+}
+showType(goo)	// (Int, Int) -> Int
+
+var fp : (Int, Int) -> Int		// function Type
+fp = goo
+
+var result = fp(12, 14)		//  주의 : 함수 타입 변수로 함수 호출시 인자 이름을 표시하지 않음
+
+// typealais
+typealias FP = (Int, Int) -> Int
+var f : FP
 ````
