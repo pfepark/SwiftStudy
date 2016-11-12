@@ -123,3 +123,56 @@ var result = fp(12, 14)		//  주의 : 함수 타입 변수로 함수 호출시 �
 typealias FP = (Int, Int) -> Int
 var f : FP
 ````
+
+#### closure
+````swift
+func Sort( _ar : inout Array<Int>, compare : (Int, Int) -> Bool )	// _ ar : [Int]
+{
+	for i in 0...ar.count - 2
+	{
+		for j in j + 1...ar.count - 1
+		{
+			if compare( ar[i], ar[j] )	// 인자로 전달된 비교 정책 함수를 다시 호출
+			{
+				let temp = ar[i]
+				ar[i] = ar[j]
+				ar[j] = temp
+			}
+		}
+	}
+}
+
+var x = [1, 2, 4, 15, 10, 9, 6, 7, 20]
+
+// compare function
+func cmp1( _ a : Int, _ b : Int ) -> Bool
+{
+	return a < b
+}
+
+func cmp2( _ a : Int, _ b : Int ) -> Bool
+{
+	return a > b
+}
+
+print(x)
+Sort( &x, compare:cmp1 )
+print(x)
+
+// 클로져 (익명의 함수) 사용하기, C++ 람다, Java : 클로져, Objective-C : 블럭
+Sort( &x, compare : { (a : Int, b : Int) -> Bool in return a < b } )
+Sort( &x, compare : { (a : Int, b : Int) in return a < b } )		// 리턴 타입을 유추가능하므로 클로져에서 리턴타입 생략 가능
+Sort( &x, compare : { (a, b in return a < b } ) 					// 컴파일러가 데이터 타입 추론 가능하므로 생략 가능
+Sort( &x, compare : { a, b in return a < b } )						// 인자 전달의 ( ) 생략 가능
+Sort( &x, compare : { a, b in a < b } )
+Sort( &x, compare : { $0 < $1 } )
+Sort( &x, compare : < )
+
+// trailing closure
+/ 마지막 인자가 함수타입일때는 함수호출() 뒤에 클로져 표현 가능
+Sort( &x ){ $0 < $1 }	// 마지막 인자일경우만 가능
+
+// 클로져와 타입
+var f = { ( a: Int, b : Int) -> Int in return a + b }
+showType(f)		// ((Int, Int)) -> Int
+````
