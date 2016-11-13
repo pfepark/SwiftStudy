@@ -208,3 +208,49 @@ cp2.x = 12
 print(cp2.x)	// 12
 print(cp1.x)	// 12
 ````
+
+#### initializer
+````swift
+// 1. 모든 맴버 data는 반드시 어떤 방식으로든 초기화 되어야 한다. (단, Optional타입은 예외)
+// 2. 생성자 이름은 init
+// 3. 자신을 담은 포인터(참조) self
+class Point
+{
+	var x : Int
+	var y : Int
+	
+	// designated initializer 지정 초기화
+	// 지정 초기화 메소드는 클래스의 원시 초기화 메소드이다. 
+	// 이 초기화 과정에서는 해당 클래스의 모든 멤버를 초기화해야 한다. 
+	// 따라서 현 클래스에서 새롭게 정의한 모든 멤버의 초기값을 세팅하고, 
+	// 다시 부모의 초기화 메소드를 호출하여 상속 받은 모든 멤버들의 초기값을 세팅한다.
+	init( x : Int, y : Int ) { self.x = x, self.y = y }
+	
+	// 생성자에서 다른 생성자 호출 하고 싶으면 편의(convenience)생성자로 만든다.
+	convenience init() { self.init( x:0, y:0 ) }
+	
+	// 소멸자 : deinit.. ()를 표시하지 않는다.
+	deinit { print("deinit") }
+}
+
+var p1 = Point( x:10, y:20 )
+print(p1.x)
+
+var p2 : Point? = Point()
+p2 = nil		// p2 call deinit
+
+// 상속과 생성자
+class Rect : Point
+{
+	var width = 0
+	var height = 0
+	
+	init()
+	{
+		//super.init() // 편의생성자는 호출안됨
+		super.init(x:0, y:0)
+	}
+}
+
+var v = Rect()
+````
