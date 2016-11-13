@@ -176,3 +176,35 @@ Sort( &x ){ $0 < $1 }	// 마지막 인자일경우만 가능
 var f = { ( a: Int, b : Int) -> Int in return a + b }
 showType(f)		// ((Int, Int)) -> Int
 ````
+
+#### class
+````swift
+struct SPoint
+{
+	var x : Int = 0
+	var y : Int = 0
+}
+
+class CPoint
+{
+	var x : Int = 0
+	var y : Int = 0
+}
+
+var n = 0
+var ar = [1,2,3]
+
+var sp1 = SPoint()		// 구조체는 값 스택에 할당.
+var sp2 = sp1			// 값 타입의 복사
+sp2.x = 10
+
+print(sp2.x)	// 10
+print(sp1.x)	// 0
+
+var cp1 = CPoint()	// 클래스는 힙에 할당 : 상속 가능, 소멸자 가능, reflection 으로 동적 타입 검사 가능
+var cp2 = cp1		// 참조 타입의 복사
+cp2.x = 12
+
+print(cp2.x)	// 12
+print(cp1.x)	// 12
+````
