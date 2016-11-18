@@ -285,7 +285,7 @@ class Rect
 	
 	// type property (형식 속성) : static맴버 data
 	static var count : Int = 0
-````
+}
 
 Rect.count = 10		// 형식 속성 사용. 클래스이름.속성
 
@@ -297,3 +297,33 @@ r1.pt2.x = 10	// 처음 사용.. 이 순간 pt2가 생성된다.
 print(r1.width)
 r1.width = 30
 print(r1.width)
+````
+
+#### subscript
+````swift
+class Vector
+{
+	var buffer : Array<Int> = [1,2,3,4]		// empty 배열 초기화
+	
+	// subscript : 객체를 배열처럼 사용하게 하는 문법 [] 연산자 재정의 기술
+	subscript(idx, Int) -> Int {
+		get { return buffer[idx] }
+		set { buffer[idx] = newValue }
+	}
+	
+	subscript(idx : String) -> String {
+		get { return "aa" }
+	}
+	
+	subscript(idx1 : Int, idx2 : Int) -> (Int, Int) {
+		get { return (buffer[idx1], buffer[idx2]) }
+	}
+}
+
+var v = Vector()
+v[0] = 100
+print( v[0] )		// []연산자 재정의, C# : indexer
+
+print( v["one"] )
+print( v[1,2] )
+````
