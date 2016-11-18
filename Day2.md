@@ -254,3 +254,46 @@ class Rect : Point
 
 var v = Rect()
 ````
+
+#### property
+````swift
+class Point
+{
+	var x : Int
+	var y : Int
+	
+	init()
+	{
+		x = 0
+		y = 0
+		print("Point init")
+	}
+}
+
+class Rect
+{
+	// stored property(저장 속성) : 메모리 할당됨.
+	var pt1 = Point()
+	lazy var pt2 = Point()		// 지연된 속성 lazy property
+	
+	// calculation property(계산 속성): 메모리 할당이 아닌 연산 수행
+	// 사용자는 변수처럼 사용하지만.. 클래스 제작자는 함수 처럼 만드는 문법 - C#등과 유사
+	var width : Int {
+		get { return pt2.x - pt1.x }
+		set { pt2.x = pt1.x + newValue }
+	}
+	
+	// type property (형식 속성) : static맴버 data
+	static var count : Int = 0
+````
+
+Rect.count = 10		// 형식 속성 사용. 클래스이름.속성
+
+var r1 = Rect()
+print("aa")
+
+r1.pt2.x = 10	// 처음 사용.. 이 순간 pt2가 생성된다.
+
+print(r1.width)
+r1.width = 30
+print(r1.width)
