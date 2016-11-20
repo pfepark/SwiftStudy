@@ -366,3 +366,50 @@ print(p.age)
 
 // 디폴트 인자는 컴파일 시간에 채워 지지만 어느 함수를 호출 할지는 실행시간에 결정한다.
 ````
+
+#### extension
+````swift
+class Car
+{
+	func go() { print("Car go") }
+	init()		{ print("Car init") }
+}
+
+var c = Car()
+c.go()
+
+// 기존 클래스에 새로운 메소드 추가하기. objective-c 에서 category
+extension Car
+{
+	func stop() { print("Car stop") }
+	
+	//var speed : Int		// error. stored property 추가 안됨
+	var speed : Int { get { return 0 } }	// calculation property 가능
+	
+	subscript ( idx : Int ) -> Int { get { return 0 } }	// ok
+	
+	/ 편의 생성자 추가 가능. 일반 생성자 안됨
+    // deinit 추가 안됨
+}
+
+c.stop()
+
+// String extension.
+
+var s = "ABCDEFG"
+
+// string subscript 함수가 인자가 Int가 아니다
+print(s[s.startIndex])
+print(s[s.index(s.startIndex, offsetBy: 2)])
+
+extension String
+{
+    subscript (idx : Int) -> Character {
+        get {
+            return self[ self.index(self.startIndex, offsetBy: idx) ]
+        }
+    }
+}
+
+print(s[1])
+````
