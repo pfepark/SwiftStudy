@@ -327,3 +327,42 @@ print( v[0] )		// []연산자 재정의, C# : indexer
 print( v["one"] )
 print( v[1,2] )
 ````
+
+#### method
+````swift
+class People
+{
+	var name = ""
+	var age = 0
+	
+	func set( _ name : String, _ age : Int = 10)
+	{
+		self.name = name
+		self.age = age
+		
+		print("People set")
+	}
+}
+
+class Student : People
+{
+	// 부모함수를 재정의 할떄는 반드시 override 필요
+	override func set( _ name : String, _ age : Int = 20 )
+	{
+		self.name = name
+		self.age = age
+		
+		print("Student set")
+	}
+	
+	static func foo() {}
+}
+
+var p : People = Student()
+//p.set("aa", 20)	// 부모 타입의 참조로 함수 호출
+
+p.set("AAA")	// p.set("AAA", 10) 10은 people 디폴트 인자
+print(p.age)
+
+// 디폴트 인자는 컴파일 시간에 채워 지지만 어느 함수를 호출 할지는 실행시간에 결정한다.
+````
